@@ -1,5 +1,5 @@
 <?php
-
+ use App\Restaurant;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +20,25 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::get('/test', function (){
+
+  // $resto = new Restaurant();
+  // $resto->restaurant_name = "warung kadek";
+  // $resto->save();
+
+  $getData = Restaurant::get();
+  print_r(json_encode($getData->toArray()));
+});
+
+
 /*
 tables:
 - restaurants
   restaurant_id
   restaurant_name
+  city_id
   description
-  tag_line
+  tagline
   email
   status
 
